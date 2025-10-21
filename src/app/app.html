@@ -1,44 +1,24 @@
 <div class="min-vh-100 py-5">
   <nexus-header></nexus-header>
 
-  <div class="container pt-5 d-flex flex-column gap-4">
-    <div
-      class="offcanvas offcanvas-end"
-      tabindex="-1"
-      id="offcanvasCart"
-      aria-labelledby="offcanvasCartLabel"
-    >
-      <div class="offcanvas-header">
-        <h5 class="offcanvas-title" id="offcanvasCartLabel">Carrito Nexus</h5>
-        <button
-          type="button"
-          class="btn-close text-reset"
-          data-bs-dismiss="offcanvas"
-          aria-label="Close"
-        ></button>
-      </div>
-      <div class="offcanvas-body">
-        <nexus-cart></nexus-cart>
-      </div>
-    </div>
+  <nexus-sidebar>
+    <ng-container card-title>Mi Carrito</ng-container>
+    <nexus-cart></nexus-cart>
+  </nexus-sidebar>
 
+  <nexus-modal></nexus-modal>
+
+  <div class="container pt-5 d-flex flex-column gap-4">
     <nexus-hero></nexus-hero>
 
     <nexus-book-filters></nexus-book-filters>
 
     <nexus-book-grid></nexus-book-grid>
 
-    <nexus-modal></nexus-modal>
-    <!-- TODO: Add icon cart to header -->
-
-    <!-- TODO: Separate cart-sidebar -->
-
-    <!-- TODO: Add alerts -->
-
-    <!-- TODO: Change favicon and add logo to header -->
-
     <!-- TODO: Add accordion for faqs -->
 
     <!-- TODO: Add footer -->
+
+    <!-- TODO: Add alerts -->
   </div>
 </div>

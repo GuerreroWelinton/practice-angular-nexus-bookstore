@@ -1,21 +1,22 @@
 <nav class="navbar navbar-expand-lg fixed-top bg-primary">
   <div class="container">
-    <a class="navbar-brand" href="#">
+    <a class="navbar-brand text-white" href="#">
       <img src="assets/images/logo.png" alt="Logo Nexus" width="50" />
-      <!-- Nexus -->
+      Librería Nexus
     </a>
 
-    <div class="d-flex justify-content-between gap-4">
-      <div class="d-block d-lg-none">
+    <div class="d-flex justify-content-between gap-2">
+      <div class="d-block d-lg-none d-flex align-items-center justify-content-center gap-2">
         <ng-container *ngTemplateOutlet="cartButton"> </ng-container>
+        <ng-container *ngTemplateOutlet="themeButton"> </ng-container>
       </div>
 
       <button
         class="navbar-toggler collapsed btn btn-primary"
         type="button"
         data-bs-toggle="collapse"
-        data-bs-target="#navbarColor01"
-        aria-controls="navbarColor01"
+        data-bs-target="#navbarContent"
+        aria-controls="navbarContent"
         aria-expanded="false"
         aria-label="Toggle navigation"
       >
@@ -23,13 +24,10 @@
       </button>
     </div>
 
-    <div class="navbar-collapse collapse" id="navbarColor01">
+    <div class="navbar-collapse collapse" id="navbarContent">
       <ul class="navbar-nav me-auto">
         <li class="nav-item">
-          <a class="nav-link active" href="#">
-            Inicio
-            <span class="visually-hidden">(current)</span>
-          </a>
+          <a class="nav-link" href="#">Inicio</a>
         </li>
 
         <li class="nav-item">
@@ -41,25 +39,28 @@
         </li>
 
         <li class="nav-item">
-          <a class="nav-link" href="#">Preguntas Frecuentes</a>
+          <a class="nav-link" href="#">FAQs</a>
         </li>
       </ul>
 
-      <div class="d-none d-lg-block">
-        <ng-container *ngTemplateOutlet="cartButton"></ng-container>
-      </div>
-
-      <!-- <form class="d-flex">
-        <input class="form-control me-sm-2" type="search" placeholder="Buscar" />
+      <!-- <form class="d-flex me-2 mb-2">
+        <input class="form-control me-2" type="search" placeholder="Buscar" />
         <button class="btn btn-secondary my-2 my-sm-0" type="submit">Buscar</button>
       </form> -->
+
+      <div class="d-none d-lg-block">
+        <div class="d-flex align-items-center justify-content-center gap-2">
+          <ng-container *ngTemplateOutlet="cartButton"></ng-container>
+          <ng-container *ngTemplateOutlet="themeButton"></ng-container>
+        </div>
+      </div>
     </div>
   </div>
 </nav>
 
 <ng-template #cartButton>
   <button
-    class="btn btn-primary position-relative"
+    class="btn btn-primary position-relative lh-1"
     type="button"
     data-bs-toggle="offcanvas"
     data-bs-target="#offcanvasCart"
@@ -67,9 +68,15 @@
   >
     <nexus-feather-icon iconName="shopping-cart"></nexus-feather-icon>
 
-    <div class="position-absolute" [style.top.px]="-5" [style.right.px]="-5">
+    <div class="position-absolute" [style.top.px]="-8" [style.right.px]="-10">
       <span class="badge">{{ totalItemsInCart() }}</span>
-      <span class="visually-hidden">Items en el carrito</span>
     </div>
+  </button>
+</ng-template>
+
+<ng-template #themeButton>
+  <button class="btn btn-primary lh-1" (click)="toggleTheme()">
+    <nexus-feather-icon [iconName]="currentTheme() === 'light' ? 'moon' : 'sun'">
+    </nexus-feather-icon>
   </button>
 </ng-template>
