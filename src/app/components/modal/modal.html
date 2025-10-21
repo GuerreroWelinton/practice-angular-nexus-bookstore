@@ -1,0 +1,51 @@
+<button
+  #openModalButton
+  type="button"
+  class="btn btn-primary d-none"
+  data-bs-toggle="modal"
+  data-bs-target="#modalNexus"
+>
+  Abrir Modal
+</button>
+
+<div
+  #modalElement
+  class="modal fade"
+  id="modalNexus"
+  tabindex="-1"
+  aria-labelledby="modalNexusLabel"
+  aria-hidden="true"
+  data-bs-backdrop="static"
+  data-bs-keyboard="false"
+>
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="modalNexusLabel">{{ data()?.title }}</h5>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+          (click)="close()"
+        >
+          <span aria-hidden="true"></span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p class="card-text mb-0">
+          <!-- {{ book().description }} -->
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas dolores pariatur laboriosam
+          molestias ullam eveniet illo odit mollitia? Earum repellendus, dicta maiores numquam nulla
+          quos voluptate ipsum dignissimos explicabo odit!
+        </p>
+      </div>
+      <div class="modal-footer">
+        <!-- <button type="button" class="btn btn-primary">Save changes</button> -->
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" (click)="close()">
+          Cerrar
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

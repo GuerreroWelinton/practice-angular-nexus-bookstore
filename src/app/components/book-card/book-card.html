@@ -1,0 +1,81 @@
+<div class="card h-100">
+  <div class="position-relative image-container" (click)="viewDetails.emit(book())">
+    <img
+      class="card-img-top image-blur"
+      [src]="baseImagePath + book().id + '.jpg'"
+      [alt]="book().title"
+    />
+
+    <div class="image-overlay d-flex align-items-center justify-content-center text-white">
+      <nexus-feather-icon iconName="eye" class="hover-icon"></nexus-feather-icon>
+    </div>
+
+    @if (book().discountPercentage) {
+      <span class="position-absolute start-0 mt-3 badge bg-danger px-3 py-2">
+        {{ book().discountPercentage }} %
+      </span>
+    }
+  </div>
+
+  <div class="card-body">
+    <div class="d-flex flex-column gap-2">
+      <h5 class="card-title mb-0 text-primary text-truncate" [title]="book().title">
+        {{ book().title }}
+      </h5>
+
+      <p class="card-text mb-0">
+        <!-- {{ book().description }} -->
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas dolores pariatur laboriosam
+        molestias ullam eveniet illo odit mollitia? Earum repellendus, dicta maiores numquam nulla
+        quos voluptate ipsum dignissimos explicabo odit!
+      </p>
+
+      <p class="card-text mb-0">
+        Precio:
+
+        @if (!book().discountPercentage) {
+          <span class="fw-bold ms-1">
+            {{ book().price | currency }}
+          </span>
+        }
+
+        @if (book().discountPercentage) {
+          <span class="text-muted text-decoration-line-through ms-1">
+            {{ book().price | currency }}
+          </span>
+          <span class="fw-bold text-success ms-1">
+            {{ book().price * (1 - book().discountPercentage! / 100) | currency }}
+          </span>
+        }
+      </p>
+    </div>
+  </div>
+
+  <div class="card-footer">
+    <div
+      class="btn-group-vertical btn-group-sm w-100 gap-2"
+      role="group"
+      aria-label="Grupo de botones para agregar al carrito o favoritos"
+    >
+      <button
+        type="button"
+        class="btn btn-primary w-100 d-flex align-items-center justify-content-center gap-2"
+        title="Agregar al carrito"
+        (click)="addToCart.emit(book())"
+      >
+        <nexus-feather-icon iconName="shopping-cart"></nexus-feather-icon>
+        <span> Añadir al carrito </span>
+      </button>
+
+      <button
+        type="button"
+        class="btn btn-secondary w-100 d-flex align-items-center justify-content-center gap-2"
+        title="Agregar a favoritos"
+        (click)="addToFavorites.emit(book())"
+      >
+        <nexus-feather-icon iconName="star" fill="yellow" stroke="yellow"></nexus-feather-icon>
+        <span> Añadir a favoritos </span>
+      </button>
+    </div>
+  </div>
+</div>

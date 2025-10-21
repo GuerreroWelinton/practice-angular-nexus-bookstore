@@ -1,0 +1,8 @@
+# Ignorar archivos de build
+dist/
+node_modules/
+coverage/
+
+# Ignorar archivos de configuración
+.angular/
+package-lock.json
