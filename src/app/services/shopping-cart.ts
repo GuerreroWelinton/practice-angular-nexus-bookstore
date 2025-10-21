@@ -10,14 +10,12 @@ export class ShoppingCart {
   protected readonly cartItems = signal<ShoppingCartItem[]>([]);
   // TODO: Add total price signal here
   // TODO: Implement total price in cart component
-  protected readonly totalCartItems = computed(() => this.cartItems().length);
+  readonly totalCartItems = computed(() =>
+    this.cartItems().reduce((total, item) => total + item.quantity, 0),
+  );
 
   getCartItems() {
     return this.cartItems.asReadonly();
-  }
-
-  getTotalCartItems() {
-    return this.totalCartItems();
   }
 
   isBookInCart(bookId: number) {
