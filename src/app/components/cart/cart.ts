@@ -19,6 +19,7 @@ export class Cart {
   protected readonly modalManager = inject<ModalManager<Book>>(ModalManager);
 
   protected readonly items = this.shoppingCart.getCartItems();
+  protected readonly total = this.shoppingCart.totalPrice();
 
   displayBookDetails(item: ShoppingCartItem) {
     this.modalManager.openBookDetailsModal(item.book);

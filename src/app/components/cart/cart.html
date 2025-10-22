@@ -11,10 +11,31 @@
         ></nexus-cart-item>
       </li>
     } @empty {
-      <li class="list-group-item d-flex justify-content-between align-items-center">
-        <!-- TODO: 3. Add empty cart illustration -->
-        Tu carrito está vacío.
+      <li
+        class="list-group-item d-flex flex-column justify-content-between align-items-center gap-4"
+      >
+        <span> Tu carrito está vacío. </span>
+        <div class="p-2">
+          <img src="assets/images/empty-cart.svg" class="img-fluid" alt="Carrito vacío" />
+        </div>
       </li>
     }
   </ul>
+
+  @if (items().length > 0) {
+    <div class="d-flex justify-content-between align-items-center">
+      <span>Subtotal:</span>
+      <span class="fw-bold">$10.00</span>
+    </div>
+
+    <div class="d-flex justify-content-between align-items-center">
+      <span>Descuento:</span>
+      <span class="fw-bold">$5.00</span>
+    </div>
+
+    <div class="d-flex justify-content-between align-items-center">
+      <span>Total:</span>
+      <span class="fw-bold">$5.00</span>
+    </div>
+  }
 </div>

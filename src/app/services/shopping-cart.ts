@@ -8,7 +8,11 @@ import { ShoppingCartItem } from '../interfaces/shopping-cart-interface';
 })
 export class ShoppingCart {
   protected readonly cartItems = signal<ShoppingCartItem[]>([]);
-  // TODO: 4. Add total price signal here and implement in sidebar cart component
+  //
+  // TODO: 4. Fix: update and add price with discount, discount and total price
+  readonly totalPrice = computed(() =>
+    this.cartItems().reduce((total, item) => total + item.book.price * item.quantity, 0),
+  );
 
   // TODO: 5. Save cart in localStorage with effect to cartItems
   readonly totalCartItems = computed(() =>

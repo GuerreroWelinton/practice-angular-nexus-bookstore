@@ -7,4 +7,5 @@ export interface Book {
   category: string;
   imageUrl: string;
   year: number;
+  description: string;
 }
