@@ -4,9 +4,3 @@
   object-fit: contain;
   max-width: 300px;
 }
-
-@media (max-width: 767.98px) {
-  .img-hero {
-    aspect-ratio: 16 / 9;
-  }
-}

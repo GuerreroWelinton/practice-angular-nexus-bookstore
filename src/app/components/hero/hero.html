@@ -1,17 +1,20 @@
 <section class="container-fluid">
-  <div class="row bg-primary text-white py-3 px-1">
+  <div class="row py-3 px-1">
     <div class="col-6 col-sm-7 col-md-9">
       <div class="w-100 h-100 d-flex flex-column justify-content-center">
         <h1 class="fw-bold">Tu aventura literaria empieza en Nexus</h1>
-        <p class="fs-6">Miles de títulos, envío rápido y las mejores ofertas en libros nuevos</p>
+        <p class="fs-5">Miles de títulos, envío rápido y las mejores ofertas en libros nuevos</p>
       </div>
     </div>
 
     <div class="col-6 col-sm-5 col-md-3">
-      <div class="d-block h-100">
+      <div
+        class="d-block position-relative h-100 w-100 bg-primary overflow-hidden"
+        [style.border-radius]="'30% 70% 63% 37% / 30% 37% 63% 70%'"
+      >
         <div class="h-100 d-flex justify-content-center align-items-center">
           <div id="carouselNexus" class="carousel slide" data-bs-ride="carousel">
-            <div class="carousel-indicators">
+            <div class="carousel-indicators d-none">
               @for (item of heroItems; track $index) {
                 <button
                   type="button"
@@ -23,9 +26,9 @@
                 ></button>
               }
             </div>
-            <div class="carousel-inner rounded-3">
+            <div class="carousel-inner">
               @for (item of heroItems; track $index) {
-                <div class="carousel-item" [class.active]="$index === 0" data-bs-interval="4000">
+                <div class="carousel-item" [class.active]="$index === 0" data-bs-interval="2000">
                   <div class="w-100 d-flex justify-content-center align-items-center">
                     <img class="d-block img-hero" [src]="item.img" [alt]="item.title" />
                   </div>
