@@ -1,5 +1,6 @@
 <div class="card h-100">
   <div class="position-relative image-container" (click)="viewDetails.emit(book())">
+    <!-- TODO: In mobile change size to image -->
     <img
       class="card-img-top image-blur"
       [src]="baseImagePath + book().id + '.jpg'"
@@ -23,14 +24,13 @@
         {{ book().title }}
       </h5>
 
-      <!-- TODO: Add author -->
+      <!-- TODO: 1. Add author -->
 
       <p class="card-text mb-0">
         <!-- {{ book().description }} -->
-        <!-- TODO: Implement description  -->
+        <!-- TODO: 2. Implement description  -->
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas dolores pariatur laboriosam
-        molestias ullam eveniet illo odit mollitia? Earum repellendus, dicta maiores numquam nulla
-        quos voluptate ipsum dignissimos explicabo odit!
+        molestias ullam eveniet illo odit mollitia?
       </p>
 
       <p class="card-text mb-0">
