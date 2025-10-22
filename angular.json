@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "libreria-nexus-angular": {
+    "practice-angular-nexus-bookstore": {
       "projectType": "application",
       "schematics": {},
       "root": "",
@@ -57,10 +57,10 @@
           "builder": "@angular/build:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "libreria-nexus-angular:build:production"
+              "buildTarget": "practice-angular-nexus-bookstore:build:production"
             },
             "development": {
-              "buildTarget": "libreria-nexus-angular:build:development"
+              "buildTarget": "practice-angular-nexus-bookstore:build:development"
             }
           },
           "defaultConfiguration": "development"
