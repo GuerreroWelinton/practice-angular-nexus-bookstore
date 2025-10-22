@@ -1,0 +1,34 @@
+<section class="d-flex flex-column gap-2">
+  <h2><ng-content select="[title]"></ng-content></h2>
+
+  <div class="accordion" id="faqAccordion">
+    @for (faq of faqs; track $index) {
+      <div class="accordion-item">
+        <h2 class="accordion-header" [id]="'heading' + $index">
+          <button
+            type="button"
+            data-bs-toggle="collapse"
+            class="accordion-button"
+            [class.collapsed]="$index !== 0"
+            [attr.data-bs-target]="'#collapse-' + $index"
+            [attr.aria-expanded]="$index === 0 ? 'true' : 'false'"
+            [attr.aria-controls]="'collapse-' + $index"
+          >
+            {{ faq.question }}
+          </button>
+        </h2>
+        <div
+          data-bs-parent="#faqAccordion"
+          class="accordion-collapse collapse"
+          [class.show]="$index === 0"
+          [id]="'collapse-' + $index"
+          [attr.aria-labelledby]="'heading-' + $index"
+        >
+          <div class="accordion-body">
+            {{ faq.response }}
+          </div>
+        </div>
+      </div>
+    }
+  </div>
+</section>

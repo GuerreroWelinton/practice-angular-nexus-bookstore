@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { HERO_ITEMS } from '../../constants/hero-mock';
+import { HeroItem } from '../../interfaces/hero-interface';
 
 @Component({
   selector: 'nexus-hero',
@@ -6,4 +8,6 @@ import { Component } from '@angular/core';
   templateUrl: './hero.html',
   styleUrl: './hero.css',
 })
-export class Hero {}
+export class Hero {
+  readonly heroItems: HeroItem[] = HERO_ITEMS;
+}

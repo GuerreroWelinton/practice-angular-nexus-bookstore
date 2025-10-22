@@ -1,12 +1,12 @@
 import { Component, inject } from '@angular/core';
 
-import { BookCard } from '../book-card/book-card';
+import { Book } from '../../interfaces/book-interface';
 
 import { BooksApiMock } from '../../services/books-api-mock';
 import { ModalManager } from '../../services/modal-manager';
 import { ShoppingCart } from '../../services/shopping-cart';
 
-import { Book } from '../../interfaces/book-interface';
+import { BookCard } from '../book-card/book-card';
 
 @Component({
   selector: 'nexus-book-grid',

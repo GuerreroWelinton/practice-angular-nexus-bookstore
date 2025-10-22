@@ -1,6 +1,6 @@
 import { Book } from '../interfaces/book-interface';
 
-export const booksMock: Book[] = [
+export const BOOKS: Book[] = [
   {
     id: 8,
     title: 'Cien años de soledad',

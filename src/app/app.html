@@ -1,24 +1,31 @@
 <div class="min-vh-100 py-5">
   <nexus-header></nexus-header>
 
-  <nexus-sidebar>
-    <ng-container card-title>Mi Carrito</ng-container>
-    <nexus-cart></nexus-cart>
-  </nexus-sidebar>
+  <!-- TODO: Add alerts -->
 
   <nexus-modal></nexus-modal>
 
+  <nexus-sidebar>
+    <ng-container title> Mi carrito de compras </ng-container>
+
+    <nexus-cart></nexus-cart>
+  </nexus-sidebar>
+
   <div class="container pt-5 d-flex flex-column gap-4">
-    <nexus-hero></nexus-hero>
+    <nexus-hero> </nexus-hero>
 
-    <nexus-book-filters></nexus-book-filters>
+    <nexus-book-grid>
+      <ng-container title> Libros destacados y más vendidos </ng-container>
 
-    <nexus-book-grid></nexus-book-grid>
+      <ng-container filters>
+        <nexus-book-filters></nexus-book-filters>
+      </ng-container>
+    </nexus-book-grid>
 
-    <!-- TODO: Add accordion for faqs -->
+    <nexus-faqs>
+      <ng-container title> Preguntas frecuentes </ng-container>
+    </nexus-faqs>
 
     <!-- TODO: Add footer -->
-
-    <!-- TODO: Add alerts -->
   </div>
 </div>

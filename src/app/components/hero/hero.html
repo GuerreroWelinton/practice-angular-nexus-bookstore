@@ -1,12 +1,58 @@
-<div class="row">
-  <div class="col-8">
-    <h1>Nexus, tu aplicación de venta de libros de confianza</h1>
-    <p>
-      Bienvenido a nuestra librería en línea. Explora nuestra colección de libros y encuentra tu
-      próxima lectura favorita.
-    </p>
+<section class="container-fluid">
+  <div class="row bg-primary text-white py-3 px-1">
+    <div class="col-6 col-sm-7 col-md-9">
+      <div class="w-100 h-100 d-flex flex-column justify-content-center">
+        <h1 class="fw-bold">Tu aventura literaria empieza en Nexus</h1>
+        <p class="fs-6">Miles de títulos, envío rápido y las mejores ofertas en libros nuevos</p>
+      </div>
+    </div>
+
+    <div class="col-6 col-sm-5 col-md-3">
+      <div class="d-block h-100">
+        <div class="h-100 d-flex justify-content-center align-items-center">
+          <div id="carouselNexus" class="carousel slide" data-bs-ride="carousel">
+            <div class="carousel-indicators">
+              @for (item of heroItems; track $index) {
+                <button
+                  type="button"
+                  data-bs-target="#carouselNexus"
+                  [class.active]="$index === 0"
+                  [attr.data-bs-slide-to]="$index"
+                  [attr.aria-current]="$index === 0 ? 'true' : null"
+                  [attr.aria-label]="'Slide ' + ($index + 1)"
+                ></button>
+              }
+            </div>
+            <div class="carousel-inner rounded-3">
+              @for (item of heroItems; track $index) {
+                <div class="carousel-item" [class.active]="$index === 0" data-bs-interval="4000">
+                  <div class="w-100 d-flex justify-content-center align-items-center">
+                    <img class="d-block img-hero" [src]="item.img" [alt]="item.title" />
+                  </div>
+                </div>
+              }
+            </div>
+            <button
+              class="carousel-control-prev"
+              type="button"
+              data-bs-target="#carouselNexus"
+              data-bs-slide="prev"
+            >
+              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Anterior libro destacado</span>
+            </button>
+            <button
+              class="carousel-control-next"
+              type="button"
+              data-bs-target="#carouselNexus"
+              data-bs-slide="next"
+            >
+              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Siguiente libro destacado</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
-  <div class="col-4">
-    <img src="assets/images/hero.webp" alt="Librería Nexus" class="img-fluid rounded" />
-  </div>
-</div>
+</section>
