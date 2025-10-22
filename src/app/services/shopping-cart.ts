@@ -8,9 +8,9 @@ import { ShoppingCartItem } from '../interfaces/shopping-cart-interface';
 })
 export class ShoppingCart {
   protected readonly cartItems = signal<ShoppingCartItem[]>([]);
-  // TODO: 4. Add total price signal here
-  // TODO: 5. Implement total price in cart component
-  // TODO: 6. Save cart in localStorage with effect to cartItems
+  // TODO: 4. Add total price signal here and implement in sidebar cart component
+
+  // TODO: 5. Save cart in localStorage with effect to cartItems
   readonly totalCartItems = computed(() =>
     this.cartItems().reduce((total, item) => total + item.quantity, 0),
   );

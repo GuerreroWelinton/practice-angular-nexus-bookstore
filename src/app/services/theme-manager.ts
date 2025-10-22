@@ -7,7 +7,7 @@ export class ThemeManager {
   readonly themes = ['light', 'dark'];
   readonly currentTheme = signal<string>(this.getCurrentTheme());
 
-  // TODO: 7. Add effect for save currentTheme in localStorage
+  // TODO: 6. Add effect for save currentTheme in localStorage
 
   getCurrentTheme(): string {
     return document.body.getAttribute('data-bs-theme') || this.getBrowserTheme();
