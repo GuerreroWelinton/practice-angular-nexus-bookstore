@@ -2,6 +2,8 @@
 
 Aplicación web de una librería online construida con Angular 20 (standalone components), enfocada en mostrar un catálogo de libros, gestionar un carrito de compras y ofrecer una experiencia responsiva con Bootstrap.
 
+> **🔗 Ver demo en vivo:** [https://guerrerowelinton.github.io/practice-angular-nexus-bookstore/](https://guerrerowelinton.github.io/practice-angular-nexus-bookstore/)
+
 > Proyecto generado con Angular CLI 20.3.6. Nombre del paquete: `practice-angular-nexus-bookstore`.
 
 ## 🚀 Características principales
