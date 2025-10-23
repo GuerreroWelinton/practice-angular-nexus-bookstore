@@ -53,3 +53,16 @@
   -webkit-line-clamp: 5;
   -webkit-box-orient: vertical;
 }
+
+.img-hero {
+  aspect-ratio: 1 / 1;
+  object-fit: contain;
+  max-width: 300px;
+  height: 400px;
+}
+
+@media (min-width: 576px) {
+  .img-hero {
+    height: 200px;
+  }
+}

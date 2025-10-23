@@ -1,15 +1,17 @@
 <div class="d-flex justify-content-start gap-2 py-2 position-relative">
-  <div class="position-relative image-container" (click)="displayBookDetails.emit(item())">
-    <img
-      class="image-blur"
-      [style.height.px]="75"
-      [style.width.px]="50"
-      [src]="item().book.imageUrl"
-      [alt]="item().book.title + ' - ' + item().book.author"
-    />
+  <div class="h-100 d-flex justify-content-center align-items-center">
+    <div class="position-relative image-container" (click)="displayBookDetails.emit(item())">
+      <img
+        class="image-blur"
+        [style.height.px]="75"
+        [style.width.px]="50"
+        [src]="item().book.imageUrl"
+        [alt]="item().book.title + ' - ' + item().book.author"
+      />
 
-    <div class="image-overlay d-flex align-items-center justify-content-center text-white">
-      <nexus-feather-icon iconName="eye" class="hover-icon"></nexus-feather-icon>
+      <div class="image-overlay d-flex align-items-center justify-content-center text-white">
+        <nexus-feather-icon iconName="eye" class="hover-icon"></nexus-feather-icon>
+      </div>
     </div>
   </div>
 

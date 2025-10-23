@@ -11,7 +11,6 @@ export const HERO_ITEMS: HeroItem[] = [
     title: 'Imagen 2',
     img: 'assets/images/hero/2.svg',
   },
-
   {
     id: 3,
     title: 'Imagen 3',

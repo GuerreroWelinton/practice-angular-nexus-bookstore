@@ -1,5 +1,5 @@
-<section class="container-fluid">
-  <div class="row py-3 px-1 g-2">
+<section>
+  <div class="row g-4">
     <div class="d-none d-sm-block col-sm-7 col-md-9">
       <div class="w-100 h-100 d-flex flex-column justify-content-center">
         <h1 class="fw-bold">Tu aventura literaria empieza en Nexus</h1>
@@ -9,51 +9,52 @@
 
     <div class="col-12 col-sm-5 col-md-3">
       <div
-        class="d-block position-relative h-100 w-100 bg-primary overflow-hidden"
+        class="d-flex justify-content-center align-items-center position-relative bg-primary overflow-hidden"
         [style.border-radius]="'30% 70% 63% 37% / 30% 37% 63% 70%'"
       >
-        <div class="h-100 d-flex justify-content-center align-items-center">
-          <div id="carouselNexus" class="carousel slide" data-bs-ride="carousel">
-            <div class="carousel-indicators d-none">
-              @for (item of heroItems; track $index) {
-                <button
-                  type="button"
-                  data-bs-target="#carouselNexus"
-                  [class.active]="$index === 0"
-                  [attr.data-bs-slide-to]="$index"
-                  [attr.aria-current]="$index === 0 ? 'true' : null"
-                  [attr.aria-label]="'Slide ' + ($index + 1)"
-                ></button>
-              }
-            </div>
-            <div class="carousel-inner">
-              @for (item of heroItems; track $index) {
-                <div class="carousel-item" [class.active]="$index === 0" data-bs-interval="2000">
-                  <div class="w-100 d-flex justify-content-center align-items-center">
-                    <img class="d-block img-hero" [src]="item.img" [alt]="item.title" />
-                  </div>
-                </div>
-              }
-            </div>
-            <button
-              class="carousel-control-prev"
-              type="button"
-              data-bs-target="#carouselNexus"
-              data-bs-slide="prev"
-            >
-              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-              <span class="visually-hidden">Anterior libro destacado</span>
-            </button>
-            <button
-              class="carousel-control-next"
-              type="button"
-              data-bs-target="#carouselNexus"
-              data-bs-slide="next"
-            >
-              <span class="carousel-control-next-icon" aria-hidden="true"></span>
-              <span class="visually-hidden">Siguiente libro destacado</span>
-            </button>
+        <div id="carouselNexus" class="carousel slide w-100" data-bs-ride="carousel">
+          <div class="carousel-indicators d-none">
+            @for (item of heroItems; track $index) {
+              <button
+                type="button"
+                data-bs-target="#carouselNexus"
+                [class.active]="$index === 0"
+                [attr.data-bs-slide-to]="$index"
+                [attr.aria-current]="$index === 0 ? 'true' : null"
+                [attr.aria-label]="'Slide ' + ($index + 1)"
+              ></button>
+            }
           </div>
+
+          <div class="carousel-inner">
+            @for (item of heroItems; track $index) {
+              <div class="carousel-item p-5" [class.active]="$index === 0" data-bs-interval="4000">
+                <div class="d-flex justify-content-center align-items-center">
+                  <img class="d-block img-hero" [src]="item.img" [alt]="item.title" />
+                </div>
+              </div>
+            }
+          </div>
+
+          <button
+            class="carousel-control-prev"
+            type="button"
+            data-bs-target="#carouselNexus"
+            data-bs-slide="prev"
+          >
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Anterior libro destacado</span>
+          </button>
+
+          <button
+            class="carousel-control-next"
+            type="button"
+            data-bs-target="#carouselNexus"
+            data-bs-slide="next"
+          >
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Siguiente libro destacado</span>
+          </button>
         </div>
       </div>
     </div>
