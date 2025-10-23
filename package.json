@@ -9,7 +9,7 @@
     "test": "ng test",
     "format": "prettier --write \"src/**/*.{ts,html,css,scss,json}\"",
     "format:check": "prettier --check \"src/**/*.{ts,html,css,scss,json}\"",
-    "build:href": "ng build --base-href ./practice-angular-nexus-bookstore/browser/",
+    "build:href": "ng build --base-href ./",
     "build:github": "npm run delete:docs && npm run build:href && npm run copy:dist",
     "delete:docs": "del docs",
     "copy:dist": "copyfiles dist/practice-angular-nexus-bookstore/browser/* ./docs -f"
