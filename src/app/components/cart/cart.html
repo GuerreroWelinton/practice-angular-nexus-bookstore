@@ -25,17 +25,17 @@
   @if (items().length > 0) {
     <div class="d-flex justify-content-between align-items-center">
       <span>Subtotal:</span>
-      <span class="fw-bold">$10.00</span>
+      <span class="fw-bold">{{ subTotalPrice() | currency }}</span>
     </div>
 
     <div class="d-flex justify-content-between align-items-center">
       <span>Descuento:</span>
-      <span class="fw-bold">$5.00</span>
+      <span class="fw-bold">{{ discount() | currency }}</span>
     </div>
 
     <div class="d-flex justify-content-between align-items-center">
       <span>Total:</span>
-      <span class="fw-bold">$5.00</span>
+      <span class="fw-bold">{{ totalPrice() | currency }}</span>
     </div>
   }
 </div>

@@ -4,24 +4,32 @@ import { Injectable, signal } from '@angular/core';
   providedIn: 'root',
 })
 export class ThemeManager {
-  readonly themes = ['light', 'dark'];
-  readonly currentTheme = signal<string>(this.getCurrentTheme());
+  protected readonly themes = ['light', 'dark'];
+  protected readonly currentTheme = signal<string>(this.getDefaultTheme());
 
   // TODO: 6. Add effect for save currentTheme in localStorage
 
-  getCurrentTheme(): string {
+  constructor() {
+    this.setDefaultTheme();
+  }
+
+  protected getDefaultTheme(): string {
     return document.body.getAttribute('data-bs-theme') || this.getBrowserTheme();
   }
 
-  getBrowserTheme(): string {
+  protected getBrowserTheme(): string {
     if (typeof window !== 'undefined' && window.matchMedia) {
       return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
     }
     return 'light';
   }
 
-  setDefaultTheme(): void {
+  protected setDefaultTheme(): void {
     document.body.setAttribute('data-bs-theme', this.currentTheme());
+  }
+
+  getCurrentTheme() {
+    return this.currentTheme.asReadonly();
   }
 
   toggleTheme(): void {

@@ -1,10 +1,8 @@
 import { NgTemplateOutlet } from '@angular/common';
-import { Component, inject, OnInit } from '@angular/core';
-
-import { FeatherIcon } from '../feather-icon/feather-icon';
-
+import { Component, inject } from '@angular/core';
 import { ShoppingCart } from '../../services/shopping-cart';
 import { ThemeManager } from '../../services/theme-manager';
+import { FeatherIcon } from '../feather-icon/feather-icon';
 
 @Component({
   selector: 'nexus-header',
@@ -12,16 +10,12 @@ import { ThemeManager } from '../../services/theme-manager';
   templateUrl: './header.html',
   styleUrl: './header.css',
 })
-export class Header implements OnInit {
+export class Header {
   protected readonly shoopingCart = inject(ShoppingCart);
   protected readonly themeManager = inject(ThemeManager);
 
-  protected readonly totalItemsInCart = this.shoopingCart.totalCartItems;
-  protected readonly currentTheme = this.themeManager.currentTheme;
-
-  ngOnInit(): void {
-    this.themeManager.setDefaultTheme();
-  }
+  readonly totalItemsInCart = this.shoopingCart.totalCartItems;
+  readonly currentTheme = this.themeManager.getCurrentTheme();
 
   toggleTheme(): void {
     this.themeManager.toggleTheme();

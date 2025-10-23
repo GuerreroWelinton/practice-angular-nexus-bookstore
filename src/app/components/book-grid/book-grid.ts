@@ -1,11 +1,8 @@
 import { Component, inject } from '@angular/core';
-
 import { Book } from '../../interfaces/book-interface';
-
 import { BooksApiMock } from '../../services/books-api-mock';
 import { ModalManager } from '../../services/modal-manager';
 import { ShoppingCart } from '../../services/shopping-cart';
-
 import { BookCard } from '../book-card/book-card';
 
 @Component({

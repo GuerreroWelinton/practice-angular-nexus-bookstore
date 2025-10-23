@@ -10,7 +10,7 @@
       <nexus-feather-icon iconName="eye" class="hover-icon"></nexus-feather-icon>
     </div>
 
-    @if (book().discountPercentage) {
+    @if (book().discountPercentage && book().discountedPrice) {
       <span class="position-absolute start-0 mt-3 badge bg-danger px-3 py-2">
         {{ book().discountPercentage }} %
       </span>
@@ -32,18 +32,18 @@
       <p class="card-text mb-0">
         Precio:
 
-        @if (!book().discountPercentage) {
+        @if (!book().discountPercentage || !book().discountedPrice) {
           <span class="fw-bold ms-1">
             {{ book().price | currency }}
           </span>
         }
 
-        @if (book().discountPercentage) {
+        @if (book().discountPercentage && book().discountedPrice) {
           <span class="text-muted text-decoration-line-through ms-1">
             {{ book().price | currency }}
           </span>
           <span class="fw-bold text-success ms-1">
-            {{ book().price * (1 - book().discountPercentage! / 100) | currency }}
+            {{ book().discountedPrice | currency }}
           </span>
         }
       </p>

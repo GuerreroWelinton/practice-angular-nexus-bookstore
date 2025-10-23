@@ -1,9 +1,7 @@
 import { CurrencyPipe } from '@angular/common';
 import { Component, input, output } from '@angular/core';
-
-import { FeatherIcon } from '../feather-icon/feather-icon';
-
 import { ShoppingCartItem } from '../../interfaces/shopping-cart-interface';
+import { FeatherIcon } from '../feather-icon/feather-icon';
 
 @Component({
   selector: 'nexus-cart-item',

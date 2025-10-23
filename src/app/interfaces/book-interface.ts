@@ -3,9 +3,10 @@ export interface Book {
   title: string;
   author: string;
   price: number;
-  discountPercentage?: number;
   category: string;
   imageUrl: string;
   year: number;
   description: string;
+  discountPercentage?: number;
+  discountedPrice?: number;
 }

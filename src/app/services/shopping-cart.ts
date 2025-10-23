@@ -1,5 +1,4 @@
 import { computed, Injectable, signal } from '@angular/core';
-
 import { Book } from '../interfaces/book-interface';
 import { ShoppingCartItem } from '../interfaces/shopping-cart-interface';
 
@@ -8,22 +7,34 @@ import { ShoppingCartItem } from '../interfaces/shopping-cart-interface';
 })
 export class ShoppingCart {
   protected readonly cartItems = signal<ShoppingCartItem[]>([]);
-  //
-  // TODO: 4. Fix: update and add price with discount, discount and total price
-  readonly totalPrice = computed(() =>
+
+  readonly totalCartItems = computed<number>(() =>
+    this.cartItems().reduce((total, item) => total + item.quantity, 0),
+  );
+
+  readonly subTotalPrice = computed<number>(() =>
     this.cartItems().reduce((total, item) => total + item.book.price * item.quantity, 0),
   );
 
-  // TODO: 5. Save cart in localStorage with effect to cartItems
-  readonly totalCartItems = computed(() =>
-    this.cartItems().reduce((total, item) => total + item.quantity, 0),
+  readonly totalDiscount = computed<number>(() =>
+    this.cartItems().reduce(
+      (total, { book, quantity }) =>
+        total +
+        (book.discountPercentage && book.discountedPrice ? book.price - book.discountedPrice : 0) *
+          quantity,
+      0,
+    ),
   );
+
+  readonly totalPrice = computed<number>(() => this.subTotalPrice() - this.totalDiscount());
+
+  // TODO: 5. Save cart in localStorage with effect to cartItems
 
   getCartItems() {
     return this.cartItems.asReadonly();
   }
 
-  isBookInCart(bookId: number) {
+  protected isBookInCart(bookId: number) {
     return this.cartItems().some((item) => item.book.id === bookId);
   }
 
