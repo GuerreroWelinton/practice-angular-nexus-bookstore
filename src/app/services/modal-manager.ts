@@ -17,7 +17,9 @@ export class ModalManager<T> {
   }
 
   closeModal() {
-    this.isOpen.set(false);
-    this.data.set(null);
+    setTimeout(() => {
+      this.isOpen.set(false);
+      this.data.set(null);
+    }, 300);
   }
 }

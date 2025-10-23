@@ -8,8 +8,6 @@
   Abrir Modal
 </button>
 
-<!-- TODO: Add book details in modal -->
-
 <div
   #modalElement
   class="modal fade"
@@ -20,10 +18,10 @@
   data-bs-backdrop="static"
   data-bs-keyboard="false"
 >
-  <div class="modal-dialog" role="document">
+  <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="modalNexusLabel">{{ data()?.title }}</h5>
+        <h5 class="modal-title" id="modalNexusLabel">{{ book()?.title }}</h5>
         <button
           type="button"
           class="btn-close"
@@ -35,11 +33,28 @@
         </button>
       </div>
       <div class="modal-body">
-        <p class="card-text mb-0">
-          <!-- {{ book().description }} -->
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas dolores pariatur laboriosam
-          molestias ullam eveniet illo odit mollitia?
-        </p>
+        <div class="row">
+          <div class="col-5">
+            <div class="h-100 d-flex justify-content-center align-items-center">
+              <img
+                class="image-blur"
+                [style.height.px]="200"
+                [src]="book()?.imageUrl"
+                [alt]="book()?.title + ' por ' + book()?.author + ' - Portada del libro'"
+              />
+            </div>
+          </div>
+
+          <div class="col-7">
+            <div>
+              <small class="text-muted">{{ `${book()?.author} (${book()?.year})` }}</small>
+            </div>
+
+            <span class="badge bg-secondary">{{ book()?.category }}</span>
+
+            <p class="card-text mb-0">{{ book()?.description }}</p>
+          </div>
+        </div>
       </div>
       <div class="modal-footer">
         <!-- <button type="button" class="btn btn-primary">Save changes</button> -->

@@ -1,4 +1,4 @@
-import { computed, Injectable, signal } from '@angular/core';
+import { computed, effect, Injectable, signal } from '@angular/core';
 import { Book } from '../interfaces/book-interface';
 import { ShoppingCartItem } from '../interfaces/shopping-cart-interface';
 
@@ -6,7 +6,7 @@ import { ShoppingCartItem } from '../interfaces/shopping-cart-interface';
   providedIn: 'root',
 })
 export class ShoppingCart {
-  protected readonly cartItems = signal<ShoppingCartItem[]>([]);
+  protected readonly cartItems = signal<ShoppingCartItem[]>(this.getCartItemsFromLocalStorage());
 
   readonly totalCartItems = computed<number>(() =>
     this.cartItems().reduce((total, item) => total + item.quantity, 0),
@@ -17,18 +17,29 @@ export class ShoppingCart {
   );
 
   readonly totalDiscount = computed<number>(() =>
-    this.cartItems().reduce(
-      (total, { book, quantity }) =>
-        total +
-        (book.discountPercentage && book.discountedPrice ? book.price - book.discountedPrice : 0) *
-          quantity,
-      0,
-    ),
+    this.cartItems().reduce((total, item) => total + this.computeItemDiscount(item), 0),
   );
 
   readonly totalPrice = computed<number>(() => this.subTotalPrice() - this.totalDiscount());
 
-  // TODO: 5. Save cart in localStorage with effect to cartItems
+  constructor() {
+    effect(() => {
+      localStorage.setItem('shoppingCart', JSON.stringify(this.cartItems()));
+    });
+  }
+
+  protected getCartItemsFromLocalStorage(): ShoppingCartItem[] {
+    const storedCart = localStorage.getItem('shoppingCart');
+    return storedCart ? JSON.parse(storedCart) : [];
+  }
+
+  protected computeItemDiscount(cartItem: ShoppingCartItem): number {
+    const { book, quantity } = cartItem;
+    if (book.discountPercentage && book.discountedPrice) {
+      return (book.price - book.discountedPrice) * quantity;
+    }
+    return 0;
+  }
 
   getCartItems() {
     return this.cartItems.asReadonly();

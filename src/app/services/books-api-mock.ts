@@ -7,14 +7,13 @@ import { Book } from '../interfaces/book-interface';
 })
 export class BooksApiMock {
   protected readonly books = signal<Book[]>(BOOKS);
+
   protected readonly formattedBooks = computed<Book[]>(() =>
     this.books().map((book) => ({
       ...book,
       discountedPrice: this.calculateDiscountedPrice(book.price, book.discountPercentage),
     })),
   );
-
-  // TODO: 7. Implement book filter logic here and save filters in localStorage
 
   getBooks() {
     return this.formattedBooks;

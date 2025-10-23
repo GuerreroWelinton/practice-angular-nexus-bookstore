@@ -1,4 +1,4 @@
-import { Injectable, signal } from '@angular/core';
+import { effect, Injectable, signal } from '@angular/core';
 
 @Injectable({
   providedIn: 'root',
@@ -7,14 +7,16 @@ export class ThemeManager {
   protected readonly themes = ['light', 'dark'];
   protected readonly currentTheme = signal<string>(this.getDefaultTheme());
 
-  // TODO: 6. Add effect for save currentTheme in localStorage
-
   constructor() {
     this.setDefaultTheme();
+
+    effect(() => {
+      localStorage.setItem('currentTheme', this.currentTheme());
+    });
   }
 
   protected getDefaultTheme(): string {
-    return document.body.getAttribute('data-bs-theme') || this.getBrowserTheme();
+    return localStorage.getItem('currentTheme') || this.getBrowserTheme();
   }
 
   protected getBrowserTheme(): string {

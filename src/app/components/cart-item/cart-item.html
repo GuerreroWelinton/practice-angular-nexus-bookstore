@@ -1,12 +1,9 @@
 <div class="d-flex justify-content-start gap-2 py-2 position-relative">
-  <div
-    class="position-relative image-container"
-    [style.height]="'75px'"
-    [style.width]="'60px'"
-    (click)="displayBookDetails.emit(item())"
-  >
+  <div class="position-relative image-container" (click)="displayBookDetails.emit(item())">
     <img
-      class="card-img-top image-blur"
+      class="image-blur"
+      [style.height.px]="75"
+      [style.width.px]="50"
       [src]="item().book.imageUrl"
       [alt]="item().book.title + ' - ' + item().book.author"
     />
@@ -16,10 +13,12 @@
     </div>
   </div>
 
-  <div>
-    <h5 class="mb-0">{{ item().book.title }}</h5>
+  <div class="d-flex flex-column justify-content-center align-items-start">
+    <h6 class="mb-0">{{ item().book.title }}</h6>
+
     <small class="text-muted">{{ item().book.author }}</small>
-    <div class="fw-bold">
+
+    <p class="card-text mb-0">
       @if (!item().book.discountPercentage || !item().book.discountedPrice) {
         <span class="fw-bold ms-1">
           {{ item().book.price | currency }}
@@ -37,7 +36,7 @@
           {{ item().book.discountedPrice | currency }}
         </span>
       }
-    </div>
+    </p>
   </div>
 
   <div class="position-absolute end-0 top-0 mt-1">

@@ -10,7 +10,7 @@ import { ModalManager } from '../../services/modal-manager';
 })
 export class Modal {
   protected readonly modalManager = inject<ModalManager<Book>>(ModalManager);
-  protected readonly data = this.modalManager.getData();
+  protected readonly book = this.modalManager.getData();
 
   readonly openModalButton = viewChild<ElementRef<HTMLButtonElement>>('openModalButton');
   readonly modalElement = viewChild<ElementRef<HTMLDivElement>>('modalElement');
